@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>kavi Real Estate</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+    {% include "logo.html" %}
+        <h2>Price Prediction Form</h2>
+        <form method="post" action="{% url 'result' %}">
+            {% csrf_token %}
+            <label for="posted_by">POSTED BY:</label>
+            <select id="posted_by" name="posted_by">
+                <option value="Owner">Owner</option>
+                <option value="Dealer">Dealer</option>
+            </select><br><br>
+            
+    
+            <label for="under_construction">Under Construction:</label>
+            <input type="number" id="under_construction" name="under_construction" min="0" max="1" required><br><br>
+    
+            <label for="rera">RERA Approval:</label>
+            <input type="number" id="rera" name="rera" min="0" max="1" required><br><br>
+    
+            <label for="bhk_no">Number of Bedrooms (BHK):</label>
+            <input type="number" id="bhk_no" name="bhk_no" min="1" required><br><br>
+    
+            <label for="bhk_or_rk">BHK or RK:</label>
+            <select id="bhk_or_rk" name="bhk_or_rk">
+                <option value="BHK">BHK</option>
+                <option value="RK">RK</option>
+            </select><br><br>
+    
+            <label for="square_ft">Square Footage:</label>
+            <input type="number" id="square_ft" name="square_ft" min="1" required><br><br>
+    
+            <label for="ready_to_move">Ready to Move:</label>
+            <input type="number" id="ready_to_move" name="ready_to_move" min="0" max="1" required><br><br>
+    
+            <label for="resale">Resale:</label>
+            <input type="number" id="resale" name="resale" min="0" max="1" required><br><br>
+    
+            <label for="longitude">Longitude:</label>
+            <input type="number" id="longitude" name="longitude" step="0.000001" required><br><br>
+    
+            <label for="latitude">Latitude:</label>
+            <input type="number" id="latitude" name="latitude" step="0.000001" required><br><br>
+    
+            <input type="submit" value="Predict">
+        </form>
+        <h2>{{predicted_price}}</h2>
+    </body>
+</html>
